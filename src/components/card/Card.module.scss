@@ -7,7 +7,9 @@
   align-items: center;
 
   &__logo {
-    margin: 31px 244px 32px 31px;
+    margin: 31px auto 32px 31px;
+    align-self: flex-start;
+    cursor: pointer;
 
     &-svg {
       width: 100px;
