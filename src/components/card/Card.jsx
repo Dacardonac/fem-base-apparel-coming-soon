@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+import '../../styles/utils/sweetAlert.scss';
 import { useState } from 'react';
 import Illustration from '../illustration/Illustration';
 import EmailField from '../emailField/EmailField';
@@ -6,6 +8,29 @@ import c from './Card.module.scss';
 
 const Card = ({ /*title,*/ paragraph }) => {
   const [email, setEmail] = useState('');
+  const [hasError, setHasError] = useState(false);
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  customClass: {
+    popup: 'custom-toast',
+    icon: 'custom-icon'
+  },
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer);
+    toast.addEventListener('mouseleave', Swal.resumeTimer);
+  }
+});
+
+
+
+  const clearError = () => {
+    setHasError(false);
+  };
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -13,15 +38,26 @@ const Card = ({ /*title,*/ paragraph }) => {
 
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email == '') {
-      alert('Please enter an email');
+    if (email === '') {
+      setHasError(true);
+      await Toast.fire({
+        icon: 'error',
+        title: 'Error',
+      });
     } else if (!regex.test(email)) {
-      /* Implementar las toast de SweetAlert2 */
-      alert('please enter a valid email');
+      setHasError(true);
+      await Toast.fire({
+        icon: 'error',
+        title: 'Please enter a valid email',
+      });
     } else {
-      alert('Correct');
+      setHasError(false);
+      await Toast.fire({
+        icon: 'success',
+        title: 'Email sent!',
+      });
       setEmail('');
     }
   };
@@ -42,9 +78,11 @@ const Card = ({ /*title,*/ paragraph }) => {
       </h1>
       <p className={c['card__paragraph']}>{paragraph}</p>
       <EmailField
+        hasError={hasError}
         handleEmail={handleEmail}
         handleSubmit={handleSubmit}
         value={email}
+        clearError={clearError}
       />
     </article>
   );
