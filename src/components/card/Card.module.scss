@@ -1,3 +1,41 @@
 .card {
-  
+  width: 375px;
+  min-height: 100dvh;
+  background: var(--gradient-1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__logo {
+    margin: 31px 244px 32px 31px;
+
+    &-svg {
+      width: 100px;
+      height: auto;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 42px;
+    letter-spacing: 10.83px;
+    color: var(--dark-grayish-red);
+    padding: 64px 32px 16px 33px;
+
+    &-light {
+      color: var(--desaturated-red);
+      font-weight: 300;
+    }
+  }
+
+  &__paragraph {
+    text-align: center;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--desaturated-red);
+    padding:  0 33px 32px 31px;
+  }
 }
