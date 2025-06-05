@@ -32,7 +32,7 @@
     outline: none;
     font-size: 14px;
     color: var(--dark-grayish-red);
-    background: #fff7f7;
+    background: transparent;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -92,5 +92,46 @@
     &:hover {
       background: var(--hover-color);
     }
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 445px;
+    max-width: none;
+    height: 56px;
+    margin: 0;
+
+    &__input {
+      font-size: 16px;
+
+      &::placeholder {
+        font-size: 16px;
+        line-height: 28px;
+      }
+    }
+
+    &__error {
+
+    &-icon {
+      position: relative;
+      right: -38px;
+    }
+
+    &-message {
+        margin: 4px 0 0 32px;
+        font-size: 13px;
+        color: var(--soft-red);
+      }
+  }
+
+    &__button {
+      width: 100px;
+      height: 56px;
+
+      img {
+        width: 8.84px;
+        height: 17.67px;
+      }
+    }
+
   }
 }

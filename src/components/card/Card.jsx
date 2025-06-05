@@ -71,19 +71,24 @@ const Toast = Swal.mixin({
           alt="Base Apparel Logo"
         />
       </figure>
+      <div className={c['card__image-container']}>
       <Illustration />
-      <h1 className={c['card__title']}>
-        {/*title*/}
-        <span className={c['card__title-light']}>We're</span> coming soon
-      </h1>
-      <p className={c['card__paragraph']}>{paragraph}</p>
-      <EmailField
-        hasError={hasError}
-        handleEmail={handleEmail}
-        handleSubmit={handleSubmit}
-        value={email}
-        clearError={clearError}
-      />
+    </div>
+      
+      <div className={c['card__content']}>
+        <h1 className={c['card__title']}>
+          {/*title*/}
+          <span className={c['card__title-light']}>We're</span> coming soon
+        </h1>
+        <p className={c['card__paragraph']}>{paragraph}</p>
+        <EmailField
+          hasError={hasError}
+          handleEmail={handleEmail}
+          handleSubmit={handleSubmit}
+          value={email}
+          clearError={clearError}
+        />
+      </div>
     </article>
   );
 };
