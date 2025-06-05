@@ -14,7 +14,7 @@ const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 3000,
+  timer: 1150,
   timerProgressBar: true,
   customClass: {
     popup: 'custom-toast',
@@ -54,11 +54,11 @@ const Toast = Swal.mixin({
       });
     } else {
       setHasError(false);
+      setEmail('');
       await Toast.fire({
         icon: 'success',
         title: 'Email sent!',
       });
-      setEmail('');
     }
   };
 

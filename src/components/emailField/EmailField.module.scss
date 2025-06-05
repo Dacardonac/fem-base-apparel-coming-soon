@@ -8,11 +8,23 @@
   background-color: transparent;
   border-radius: 28px;
   padding: 11px 0 10px 24px;
-  margin: 0 33px 92px 31px;
+  margin: 0 33px 0 31px;
   border: 1px solid var(--desaturated-red-50);
+  cursor: text;
 
   &__error {
     border: 2px solid var(--soft-red);
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &-message {
+        margin: 8px auto 0 56px;
+        font-size: 13px;
+        color: var(--soft-red);
+      }
   }
 
   &__input {
@@ -20,21 +32,44 @@
     outline: none;
     font-size: 14px;
     color: var(--dark-grayish-red);
-    background: transparent;
+    background: #fff7f7;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
     &::placeholder {
       font-size: 14px;
       line-height: 28px;
       font-weight: 400;
       color: var(--desaturated-red-50);
+      user-select: none;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      transition: background-color 9999s ease-in-out 0s;
+      -webkit-text-fill-color: var(--dark-grayish-red);
+      box-shadow: 0 0 0 1000px #fff7f7 inset;
+      caret-color: var(--dark-grayish-red);
     }
 
     &-error {
       color: var(--soft-red);
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        -webkit-text-fill-color: var(--soft-red) !important;
+        box-shadow: 0 0 0 1000px #fff7f7 inset !important;
+        caret-color: var(--soft-red);
+      }
     }
   }
 
   &__button {
+    position: relative;
     border: none;
     outline: none;
     background: var(--gradient-2);
@@ -46,6 +81,8 @@
     justify-content: center;
     cursor: pointer;
     box-shadow: 0px 15px 20px 0px rgba(197, 109, 109, 0.2476);
+    right: -3px;
+    user-select: none;
 
     img {
       width: 8.84px;

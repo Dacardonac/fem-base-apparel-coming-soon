@@ -1,6 +1,7 @@
 .illustration {
   width: 375px;
   height: 250px;
+  user-select: none;
 
   &__img {
     width: 100%;
