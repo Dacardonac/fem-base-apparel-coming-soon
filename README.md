@@ -53,8 +53,8 @@ Active ⚡
 
 ### Links 📍
 
-- Solution URL: **[Frontend Mentor Solution 👨‍💻]()**
-- Live Site URL: **[Solution Deploy in Vercel 🚀]()**
+- Solution URL: **[Frontend Mentor Solution 👨‍💻](https://www.frontendmentor.io/solutions/base-apparel-coming-soon-page-with-react-nGtQ-hNT3u)**
+- Live Site URL: **[Solution Deploy in Vercel 🚀](https://fem-base-apparel-coming-soon-nine.vercel.app/)**
 
 ### How to Use the Project 💻
 
@@ -115,22 +115,65 @@ With this project, I learned, implemented, and practiced **React - JSX**, along 
 **You can see an example below:**
 
 ``` JSX
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './main.scss'
-import App from './App.jsx'
+const Card = ({ paragraph }) => {
+  const [email, setEmail] = useState('');
+  const [hasError, setHasError] = useState(false);
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
-```
-``` JSX
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (email === '') {
+      setHasError(true);
+      await Toast.fire({
+        icon: 'error',
+        title: 'Error',
+      });
+    } else if (!regex.test(email)) {
+      setHasError(true);
+      await Toast.fire({
+        icon: 'error',
+        title: 'Please enter a valid email',
+      });
+    } else {
+      setHasError(false);
+      setEmail('');
+      await Toast.fire({
+        icon: 'success',
+        title: 'Email sent!',
+      });
+    }
+  };
 
-```
-``` JSX
+  return (
+    <article className={c.card}>
+      <figure className={c['card__logo']}>
+        <img
+          className={c['card__logo-svg']}
+          src={logo}
+          alt="Base Apparel Logo"
+        />
+      </figure>
+      <div className={c['card__image-container']}>
+      <Illustration />
+    </div>
 
+      <div className={c['card__content']}>
+        <h1 className={c['card__title']}>
+          <span className={c['card__title-light']}>We're</span> coming soon
+        </h1>
+        <p className={c['card__paragraph']}>{paragraph}</p>
+        <EmailField
+          hasError={hasError}
+          handleEmail={handleEmail}
+          handleSubmit={handleSubmit}
+          value={email}
+          clearError={clearError}
+        />
+      </div>
+    </article>
+  );
+};
+
+export default Card;
 ```
 
 ### Continued development 🔎
